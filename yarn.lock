@@ -1967,17 +1967,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"generic-http@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "generic-http@workspace:."
-  dependencies:
-    "@companion-module/base": "npm:~1.10.0"
-    "@companion-module/tools": "npm:^1.5.1"
-    got: "npm:^13.0.0"
-    jimp: "npm:^0.22.12"
-  languageName: unknown
-  linkType: soft
-
 "get-stream@npm:^6.0.1":
   version: 6.0.1
   resolution: "get-stream@npm:6.0.1"
@@ -3003,6 +2992,17 @@ __metadata:
   checksum: 10c0/c56bda7769e04907a88423feb320babaed0711af8c436ce3e56763ab1021ba107c7b0cafb11cde7529f669cfc22bffcaebffb573645cbd63842ea9fb17cd7728
   languageName: node
   linkType: hard
+
+"plorov-test-http@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "plorov-test-http@workspace:."
+  dependencies:
+    "@companion-module/base": "npm:~1.10.0"
+    "@companion-module/tools": "npm:^1.5.1"
+    got: "npm:^13.0.0"
+    jimp: "npm:^0.22.12"
+  languageName: unknown
+  linkType: soft
 
 "pngjs@npm:^3.0.0":
   version: 3.4.0

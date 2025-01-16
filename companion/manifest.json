@@ -1,28 +1,16 @@
 {
-	"id": "generic-http",
-	"name": "generic-http",
-	"shortname": "http",
-	"description": "generic-http",
+	"id": "plorov-test-http",
+	"name": "plorov-test-http",
+	"shortname": "plorov-http",
+	"description": "plorov-test-http",
 	"version": "0.0.0",
 	"license": "MIT",
-	"repository": "git+https://github.com/bitfocus/companion-module-generic-http.git",
+	"repository": "git+https://github.com/gPlorovg/companion-module-generic-http.git",
 	"bugs": "https://github.com/bitfocus/companion-module-generic-http/issues",
 	"maintainers": [
 		{
-			"name": "William Viker",
-			"email": "william@bitfocus.io"
-		},
-		{
-			"name": "Keith Rocheck",
-			"email": "keith.rocheck@gmail.com"
-		},
-		{
-			"name": "Jeffrey Davidsz",
-			"email": "jeffrey.davidsz@vicreo.eu"
-		},
-		{
-			"name": "Joseph Adams",
-			"email": "josephdadams@gmail.com"
+			"name": "Roman Plotnikov",
+			"email": "gplorovg@gmail.com"
 		}
 	],
 	"legacyIds": [],
@@ -32,12 +20,13 @@
 		"apiVersion": "0.0.0",
 		"entrypoint": "../index.js"
 	},
-	"manufacturer": "Generic",
+	"manufacturer": "Plorov",
 	"products": [
 		"HTTP Requests"
 	],
 	"keywords": [
-		"Protocol",
-		"Generic"
+		"plorov",
+		"Generic",
+		"http"
 	]
 }

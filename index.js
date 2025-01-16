@@ -14,6 +14,7 @@ class GenericHttpInstance extends InstanceBase {
 
 		this.initActions()
 		this.initFeedbacks()
+		this.initConditions()
 	}
 
 	init(config) {
@@ -23,6 +24,7 @@ class GenericHttpInstance extends InstanceBase {
 
 		this.initActions()
 		this.initFeedbacks()
+		this.initConditions()
 	}
 
 	// Return config fields for web config
@@ -106,6 +108,36 @@ class GenericHttpInstance extends InstanceBase {
 		const urlLabel = this.config.prefix ? 'URI' : 'URL'
 
 		this.setActionDefinitions({
+			test: {
+				name: 'Test',
+				options: [
+					{
+						type: 'checkbox',
+						label: 'Enable Test Mode',
+						id: 'is_test',
+						default: true,
+					},
+				],
+
+				callback: async (action, context) => {
+					this.log('info', 'Executing Test Action');
+
+					try {
+						const isTestEnabled = action.options.is_test;
+						if (isTestEnabled) {
+							this.log('debug', 'Test mode is enabled');
+						} else {
+							this.log('debug', 'Test mode is disabled');
+						}
+
+						this.updateStatus(InstanceStatus.Ok);
+						this.log('info', 'Test Action executed successfully');
+					} catch (error) {
+						this.log('error', `Test Action failed: ${error.message}`);
+						this.updateStatus(InstanceStatus.UnknownError, error.code || 'UNKNOWN_ERROR');
+					}
+				},
+			},
 			post: {
 				name: 'POST',
 				options: [FIELDS.Url(urlLabel),
@@ -309,6 +341,45 @@ class GenericHttpInstance extends InstanceBase {
 			},
 		})
 	}
+
+	initConditions() {
+		this.setFeedbackDefinitions({
+			httpStatusCondition: {
+				type: 'boolean',
+				name: 'HTTP Status Check',
+				options: [
+					{
+						type: 'textinput',
+						label: 'URL to Check',
+						id: 'url',
+						default: 'http://example.com',
+					},
+				],
+
+				callback: async (feedback, context) => {
+					const url = feedback.options.url;
+					this.log('info', 'Executing HTTP Status Condition');
+
+					if (!url || !url.trim()) {
+						this.log('error', 'Invalid or empty URL provided in condition');
+						return false;
+					}
+
+					try {
+						const response = await fetch(url, { method: 'GET' });
+
+						const isValid = response.status === 200;
+						this.log('info', `HTTP request to "${url}" returned status ${response.status}`);
+						return isValid;
+					} catch (error) {
+						this.log('error', `HTTP request failed: ${error.message}`);
+						return false;
+					}
+				},
+			},
+		});
+	}
+
 }
 
 runEntrypoint(GenericHttpInstance, upgradeScripts)
