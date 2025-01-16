@@ -1,5 +1,5 @@
 {
-	"name": "generic-http",
+	"name": "plorov-test-http",
 	"version": "2.2.0",
 	"main": "index.js",
 	"type": "module",
@@ -8,7 +8,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/bitfocus/companion-module-generic-http.git"
+		"url": "git+https://github.com/gPlorovg/companion-module-generic-http.git"
 	},
 	"license": "MIT",
 	"dependencies": {
